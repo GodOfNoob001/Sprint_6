@@ -1,0 +1,44 @@
+from selenium import webdriver
+from urls import YandexScooterUrls
+from pages.base_page import BasePage
+import allure
+
+class TestPageTransfer:
+
+    @classmethod
+    def setup_class(cls):
+        with allure.step('Создаем новый клиент браузера для совершения тестовых прогонов'):
+            cls.driver = webdriver.Firefox()
+
+    @allure.title('При нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат')
+    @allure.description('В рамках данного тестового прогона проверяется, что при нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат вне зависимости от того, на какой странице был нажат логотип')
+    def test_success_transfer_to_main_page_by_click_scooter_label(self):
+        with allure.step('Переходим на главную страницу сервиса'):
+            self.driver.get(YandexScooterUrls.base_url)
+        base_page = BasePage(self.driver)
+        with allure.step('Нажимаем на кнопку "Заказать" для перехода на другую страницу'):
+            base_page.order_button_top_click()
+        base_page.wait_for_url_contains("/order")
+        with allure.step('Нажимаем на логотип "Самокат" в шапке сайте'):
+            base_page.scooter_logo_click()
+        base_page.wait_for_url(YandexScooterUrls.base_url)
+        with allure.step('При нажатии на логотип "Самокат" в шапке сайте - происходит редирект на главную страницу сервиса'):
+            assert base_page.current_url == YandexScooterUrls.base_url
+
+    @allure.title('При нажатии на логотип "Яндекс" на главной странице - происходит редирект на страницу Дзен')
+    @allure.description('В рамках данного тестового прогона проверяется, что при переходе к FAQ-блоку - вопросы отображаются, значения вопросов валидны')
+    def test_success_transfer_to_dzen_page_by_click_yandex_label(self):
+        with allure.step('Переходим на главную страницу сервиса'):
+            self.driver.get(YandexScooterUrls.base_url)
+        base_page = BasePage(self.driver)
+        with allure.step('Нажимаем на логотип "Яндекс" в шапке сайте'):
+            base_page.yandex_logo_click()
+        base_page.wait_for_new_window_and_switch()
+        base_page.wait_for_url_contains("?yredirect=true")
+        with allure.step('При нажатии на логотип "Яндекс" в шапке сайте - происходит редирект на главную страницу сервиса "Дзен"'):
+            assert YandexScooterUrls.dzen_url == base_page.current_url
+
+    @classmethod
+    def teardown_class(cls):
+        with allure.step('Закрываем созданный экземпляр браузерного клиента'):
+            cls.driver.quit()
