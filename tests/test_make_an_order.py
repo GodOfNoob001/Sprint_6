@@ -21,7 +21,7 @@ class TestMakeAnOrder:
     @allure.description('В рамках данного тестового прогона проверяется, что при вводе валидных данных - у пользователя есть возможность оформить заказ самоката')
     def test_complete_order_flow(self, order_data, order_button):
         with allure.step('Открываем сайт для дальнейшей работы с тестовым прогоном'):
-            self.driver.get("https://qa-scooter.praktikum-services.ru/")
+            self.driver.get(YandexScooterUrls.base_url)
         if order_button == "top":
             with allure.step('Нажимаем на кнопку создания заявки на заказ вверху страницы в шапке сайте '):
                 base_page = BasePage(self.driver)
