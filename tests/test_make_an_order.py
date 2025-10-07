@@ -1,6 +1,5 @@
 import allure
 from data import Data
-from conftest import main_page, order_page, driver
 
 class TestMakeAnOrder:
     @allure.title('Проверка позитивного пути заказа самоката через верхнюю кнопку')

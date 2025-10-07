@@ -1,7 +1,6 @@
 import allure
 import pytest
 from data import Data
-from conftest import main_page, driver
 
 class TestMainPage:
     @pytest.mark.parametrize("faq_number, expected_question", [
