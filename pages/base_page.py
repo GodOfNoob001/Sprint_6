@@ -10,12 +10,7 @@ class BasePage:
     def yandex_logo_click(self):
         self.driver.find_element(*LocatorsBasePage.YANDEX_LOGO_BUTTON).click()
 
-    def scooter_logo_click(self):
-        self.driver.find_element(*LocatorsBasePage.SCOOTER_LOGO_BUTTON).click()
-
-    def order_button_top_click(self):
-        self.driver.find_element(*LocatorsBasePage.ORDER_BUTTON_TOP).click()
-
+    @allure.step('Ждать конкретный URL')
     def wait_for_url(self, url, timeout=10):
         WebDriverWait(self.driver, timeout).until(
             expected_conditions.url_to_be(url)
