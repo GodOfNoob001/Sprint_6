@@ -27,8 +27,7 @@ class MainPage(BasePage):
     }
     def get_faq_question_by_number(self, faq_number):
         faq_data = self.FAQ_MAPPING[faq_number]
-        question_element = WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(faq_data["question"]))
-        return question_element.text
+        return self.get_element_text(faq_data["question"])
 
     def get_faq_text_by_number(self, faq_number):
         faq_data = self.FAQ_MAPPING[faq_number]
