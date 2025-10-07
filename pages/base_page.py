@@ -37,3 +37,61 @@ class BasePage:
     @property
     def current_url(self):
         return self.driver.current_url
+
+    @allure.step('Ждать видимости элемента')
+    def wait_for_element_visible(self, locator, timeout=10):
+        wait = WebDriverWait(self.driver, timeout)
+        return wait.until(expected_conditions.visibility_of_element_located(locator))
+
+    @allure.step('Ждать кликабельности элемента')
+    def wait_for_element_clickable(self, locator, timeout=10):
+        wait = WebDriverWait(self.driver, timeout)
+        return wait.until(expected_conditions.element_to_be_clickable(locator))
+
+    @allure.step('Проверить видимость элемента')
+    def is_element_visible(self, locator, timeout=5):
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                expected_conditions.visibility_of_element_located(locator)
+            )
+            return True
+        except TimeoutException:
+            return False
+
+
+    @allure.step('Найти элемент с ожиданием')
+    def find_element(self, locator, timeout=10):
+        timeout = timeout or self.default_timeout
+        return WebDriverWait(self.driver, timeout).until(
+            expected_conditions.presence_of_element_located(locator)
+        )
+
+
+    @allure.step('Кликнуть на элемент')
+    def click(self, locator, timeout=10):
+        element = self.wait_for_element_clickable(locator, timeout)
+        element.click()
+
+    @allure.step('Ввести текст в элемент')
+    def send_keys_to_element(self, locator, text, timeout=10):
+        element = self.wait_for_element_visible(locator, timeout)
+        element.clear()
+        element.send_keys(text)
+
+    @allure.step('Получить текст элемента')
+    def get_element_text(self, locator, timeout=10):
+        element = self.wait_for_element_visible(locator, timeout)
+        return element.text
+
+    @allure.step('Получить текущий URL')
+    def get_current_url(self):
+        return self.driver.current_url
+
+    @allure.step('Выполнить JavaScript')
+    def execute_script(self, script, *args):
+        return self.driver.execute_script(script, *args)
+
+    @allure.step('Проскроллиить к элементу')
+    def scroll_to_element(self, locator, timeout=10):
+        element = self.wait_for_element_visible(locator, timeout)
+        self.execute_script("arguments[0].scrollIntoView(true);", element)
