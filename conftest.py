@@ -10,7 +10,6 @@ def driver():
     with allure.step('Создаем новый клиент браузера для совершения тестовых прогонов'):
         driver_instance = webdriver.Firefox()
         driver_instance.get(YandexScooterUrls.base_url)
-        main_page = MainPage(driver_instance)
     yield driver_instance
     with allure.step('Закрываем созданный экземпляр браузерного клиента'):
         driver_instance.quit()
