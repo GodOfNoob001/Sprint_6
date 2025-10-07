@@ -5,22 +5,16 @@ from data import Data
 from conftest import main_page, driver
 
 class TestMainPage:
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.get(YandexScooterUrls.base_url)
-        main_page = MainPage(cls.driver)
-        with allure.step('Закрываем баннер куки для того, чтобы был беспрепятственный доступ к топику FAQ'):
-            main_page.close_cookie_banner()
-
-    @pytest.mark.parametrize("faq_number, expected_question", [(1, Data.first_faq_question),
-                                                                                (2, Data.second_faq_question),
-                                                                                (3, Data.third_faq_question),
-                                                                                (4, Data.fourth_faq_question),
-                                                                                (5, Data.fifth_faq_question),
-                                                                                (6, Data.sixth_faq_question),
-                                                                                (7, Data.seventh_faq_question),
-                                                                                (8, Data.eighth_faq_question)])
+    @pytest.mark.parametrize("faq_number, expected_question", [
+        (1, Data.first_faq_question),
+        (2, Data.second_faq_question),
+        (3, Data.third_faq_question),
+        (4, Data.fourth_faq_question),
+        (5, Data.fifth_faq_question),
+        (6, Data.sixth_faq_question),
+        (7, Data.seventh_faq_question),
+        (8, Data.eighth_faq_question)
+    ])
     @allure.title('При скролле до FAQ-блока на главной странице - отображаются валидные вопросы')
     @allure.description('В рамках данного тестового прогона проверяется, что при переходе к FAQ-блоку - вопросы отображаются, значения вопросов валидны')
     def test_faq_on_main_page_successfully_got_right_question_text(self, faq_number, expected_question):
