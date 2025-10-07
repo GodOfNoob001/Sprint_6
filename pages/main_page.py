@@ -9,8 +9,7 @@ class MainPage(BasePage):
 
     @allure.step('Закрыть баннер куки для доступа ко всем элементам страницы')
     def close_cookie_banner(self):
-        cookie_button = WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(LocatorsBasePage.COOKIE_BUTTON))
-        cookie_button.click()
+        self.click(LocatorsBasePage.COOKIE_BUTTON, timeout= 5)
 
     def scrolling_to_order_button_big_and_click(self):
         element = self.driver.find_element(*LocatorsMainPage.ORDER_BUTTON_BIG)
