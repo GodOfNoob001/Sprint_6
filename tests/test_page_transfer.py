@@ -2,6 +2,8 @@ from selenium import webdriver
 from urls import YandexScooterUrls
 from pages.base_page import BasePage
 import allure
+from urls import YandexScooterUrls
+from conftest import base_page, main_page, driver
 
 class TestPageTransfer:
 
