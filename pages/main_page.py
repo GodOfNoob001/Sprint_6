@@ -31,16 +31,10 @@ class MainPage(BasePage):
 
     def get_faq_text_by_number(self, faq_number):
         faq_data = self.FAQ_MAPPING[faq_number]
-        question_element = WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(faq_data["question"]))
-        question_element.click()
-        panel_element = WebDriverWait(self.driver, 10).until(
-            expected_conditions.visibility_of_element_located(faq_data["panel"])
-        )
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", panel_element)
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.visibility_of(panel_element)
-        )
-        return panel_element.text
+        self.click(faq_data["question"])
+        panel_element = self.get_element_text(faq_data["panel"])
+        self.scroll_to_element(faq_data["panel"])
+        return panel_element
 
 
 
