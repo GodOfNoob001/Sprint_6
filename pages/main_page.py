@@ -28,11 +28,13 @@ class MainPage(BasePage):
     }
     @allure.step('Получить текст вопроса по элементу на странице в топике FAQ')
     def get_faq_question_by_number(self, faq_number):
+        self.close_cookie_banner()
         faq_data = self.FAQ_MAPPING[faq_number]
         return self.get_element_text(faq_data["question"])
 
     @allure.step('Получить текст ответа по вопросу в топике FAQ')
     def get_faq_text_by_number(self, faq_number):
+        self.close_cookie_banner()
         faq_data = self.FAQ_MAPPING[faq_number]
         self.click(faq_data["question"])
         panel_element = self.get_element_text(faq_data["panel"])

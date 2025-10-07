@@ -11,7 +11,6 @@ def driver():
         driver_instance = webdriver.Firefox()
         driver_instance.get(YandexScooterUrls.base_url)
         main_page = MainPage(driver_instance)
-        main_page.close_cookie_banner()
 
     yield driver_instance
 
