@@ -30,7 +30,7 @@ class BasePage:
             if window != original_window:
                 self.driver.switch_to.window(window)
                 return
-
+    @allure.step('Получить нынешний URL-страницы')
     @property
     def current_url(self):
         return self.driver.current_url
