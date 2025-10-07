@@ -35,8 +35,7 @@ class TestMainPage:
     ])
     @allure.title('При открытии вопросов FAQ - ответы соответствуют теме вопроса')
     @allure.description('В рамках данного тестового прогона проверяется, что при открытии FAQ-вопроса - ответ внутри раскрывшейся панели соответствует тематике вопроса и валиден')
-    def test_faq_on_main_page_successfully_got_right_answer_to_right_question(self, faq_number, expected_question, expected_answer):
-        main_page = MainPage(self.driver)
+    def test_faq_on_main_page_successfully_got_right_answer_to_right_question(self, main_page, faq_number, expected_question, expected_answer):
         with allure.step(f'Получаем текст ответа к каждому вопросу, отображаемого на странице: {expected_answer}'):
             actual_answer = main_page.get_faq_text_by_number(faq_number)
         with allure.step(f'Текст вопроса соответсвует ожидаемому: {actual_answer}'):
