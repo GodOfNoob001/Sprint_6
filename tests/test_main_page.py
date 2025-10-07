@@ -37,5 +37,5 @@ class TestMainPage:
     def test_faq_on_main_page_successfully_got_right_answer_to_right_question(self, main_page, faq_number, expected_question, expected_answer):
         with allure.step(f'Получаем текст ответа к каждому вопросу, отображаемого на странице: {expected_answer}'):
             actual_answer = main_page.get_faq_text_by_number(faq_number)
-        with allure.step(f'Текст вопроса соответсвует ожидаемому: {actual_answer}'):
+        with allure.step(f'Текст ответа соответсвует ожидаемому: {actual_answer}'):
             assert actual_answer == expected_answer, f"Ожидался текст {expected_answer}, а получен {actual_answer}"
