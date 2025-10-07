@@ -23,15 +23,16 @@ class TestMainPage:
         with allure.step(f'Текст вопроса соответсвует ожидаемому: {actual_question}'):
             assert actual_question == expected_question, f"Ожидался текст {expected_question}, а получен {actual_question}"
 
-
-    @pytest.mark.parametrize("faq_number, expected_question, expected_answer", [(1, Data.first_faq_question, Data.first_faq_answer),
-                                                                                (2, Data.second_faq_question, Data.second_faq_answer),
-                                                                                (3, Data.third_faq_question, Data.third_faq_answer),
-                                                                                (4, Data.fourth_faq_question, Data.fourth_faq_answer),
-                                                                                (5, Data.fifth_faq_question, Data.fifth_faq_answer),
-                                                                                (6, Data.sixth_faq_question, Data.sixth_faq_answer),
-                                                                                (7, Data.seventh_faq_question, Data.seventh_faq_answer),
-                                                                                (8, Data.eighth_faq_question, Data.eighth_faq_answer)])
+    @pytest.mark.parametrize("faq_number, expected_question, expected_answer", [
+        (1, Data.first_faq_question, Data.first_faq_answer),
+        (2, Data.second_faq_question, Data.second_faq_answer),
+        (3, Data.third_faq_question, Data.third_faq_answer),
+        (4, Data.fourth_faq_question, Data.fourth_faq_answer),
+        (5, Data.fifth_faq_question, Data.fifth_faq_answer),
+        (6, Data.sixth_faq_question, Data.sixth_faq_answer),
+        (7, Data.seventh_faq_question, Data.seventh_faq_answer),
+        (8, Data.eighth_faq_question, Data.eighth_faq_answer)
+    ])
     @allure.title('При открытии вопросов FAQ - ответы соответствуют теме вопроса')
     @allure.description('В рамках данного тестового прогона проверяется, что при открытии FAQ-вопроса - ответ внутри раскрывшейся панели соответствует тематике вопроса и валиден')
     def test_faq_on_main_page_successfully_got_right_answer_to_right_question(self, faq_number, expected_question, expected_answer):
