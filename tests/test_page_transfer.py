@@ -19,7 +19,7 @@ class TestPageTransfer:
             main_page.order_button_top_click()
         base_page.wait_for_url_contains("/order")
         with allure.step('Нажимаем на логотип "Самокат" в шапке сайте'):
-            base_page.scooter_logo_click()
+            main_page.scooter_logo_click()
         base_page.wait_for_url(YandexScooterUrls.base_url)
         with allure.step('При нажатии на логотип "Самокат" в шапке сайте - происходит редирект на главную страницу сервиса'):
             assert base_page.current_url == YandexScooterUrls.base_url
