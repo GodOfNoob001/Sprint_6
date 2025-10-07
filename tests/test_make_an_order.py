@@ -35,8 +35,3 @@ class TestMakeAnOrder:
             order_page.confirm_order()
         with allure.step('При нажатии на кнопку - "Да" появляется сообщение об успешном создании заявки, появляется кнопка "Проверить статус"'):
             assert order_page.check_success_message(), "Сообщение об успешном заказе не появилось"
-
-    @classmethod
-    def teardown_class(cls):
-        with allure.step('Закрываем созданный экземпляр браузерного клиента'):
-            cls.driver.quit()
