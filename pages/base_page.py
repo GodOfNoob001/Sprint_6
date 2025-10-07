@@ -6,9 +6,7 @@ from locators.base_page_locators import LocatorsBasePage
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
-
-    def yandex_logo_click(self):
-        self.driver.find_element(*LocatorsBasePage.YANDEX_LOGO_BUTTON).click()
+        self.default_timeout = 10
 
     @allure.step('Ждать конкретный URL')
     def wait_for_url(self, url, timeout=10):
