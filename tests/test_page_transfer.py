@@ -26,10 +26,7 @@ class TestPageTransfer:
 
     @allure.title('При нажатии на логотип "Яндекс" на главной странице - происходит редирект на страницу Дзен')
     @allure.description('В рамках данного тестового прогона проверяется, что при переходе к FAQ-блоку - вопросы отображаются, значения вопросов валидны')
-    def test_success_transfer_to_dzen_page_by_click_yandex_label(self):
-        with allure.step('Переходим на главную страницу сервиса'):
-            self.driver.get(YandexScooterUrls.base_url)
-        base_page = BasePage(self.driver)
+    def test_success_transfer_to_dzen_page_by_click_yandex_label(self, base_page, main_page):
         with allure.step('Нажимаем на логотип "Яндекс" в шапке сайте'):
             base_page.yandex_logo_click()
         base_page.wait_for_new_window_and_switch()
