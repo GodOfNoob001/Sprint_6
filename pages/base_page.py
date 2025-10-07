@@ -26,6 +26,7 @@ class BasePage:
             expected_conditions.url_contains(text)
         )
 
+    @allure.step('Ждать новое окно и переключиться')
     def wait_for_new_window_and_switch(self, timeout=10):
         original_window = self.driver.current_window_handle
         WebDriverWait(self.driver, timeout).until(expected_conditions.number_of_windows_to_be(2))
