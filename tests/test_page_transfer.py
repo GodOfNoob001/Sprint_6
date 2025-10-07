@@ -32,9 +32,4 @@ class TestPageTransfer:
         base_page.wait_for_new_window_and_switch()
         base_page.wait_for_url_contains("?yredirect=true")
         with allure.step('При нажатии на логотип "Яндекс" в шапке сайте - происходит редирект на главную страницу сервиса "Дзен"'):
-            assert YandexScooterUrls.dzen_url == base_page.current_url
-
-    @classmethod
-    def teardown_class(cls):
-        with allure.step('Закрываем созданный экземпляр браузерного клиента'):
-            cls.driver.quit()
+            assert YandexScooterUrls.dzen_url == base_page.get_current_url()
