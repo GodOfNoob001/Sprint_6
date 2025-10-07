@@ -12,9 +12,8 @@ class MainPage(BasePage):
         self.click(LocatorsBasePage.COOKIE_BUTTON, timeout= 5)
 
     def scrolling_to_order_button_big_and_click(self):
-        element = self.driver.find_element(*LocatorsMainPage.ORDER_BUTTON_BIG)
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
-        element.click()
+        self.scroll_to_element(LocatorsMainPage.ORDER_BUTTON_BIG)
+        self.click(LocatorsMainPage.ORDER_BUTTON_BIG)
 
     FAQ_MAPPING = {
         1: {"question": LocatorsMainPage.FIRST_FAQ, "panel": LocatorsMainPage.FIRST_FAQ_PANEL},
