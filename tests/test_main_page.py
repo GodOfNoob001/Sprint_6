@@ -40,8 +40,3 @@ class TestMainPage:
             actual_answer = main_page.get_faq_text_by_number(faq_number)
         with allure.step(f'Текст вопроса соответсвует ожидаемому: {actual_answer}'):
             assert actual_answer == expected_answer, f"Ожидался текст {expected_answer}, а получен {actual_answer}"
-
-    @classmethod
-    def teardown_class(cls):
-        with allure.step('Закрываем клиент браузера'):
-            cls.driver.quit()
