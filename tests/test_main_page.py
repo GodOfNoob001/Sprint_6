@@ -2,9 +2,7 @@ import allure
 import pytest
 from selenium import webdriver
 from data import Data
-from pages.main_page import MainPage
-from urls import YandexScooterUrls
-
+from conftest import main_page, driver
 
 class TestMainPage:
     @classmethod
