@@ -29,6 +29,7 @@ class MainPage(BasePage):
         faq_data = self.FAQ_MAPPING[faq_number]
         return self.get_element_text(faq_data["question"])
 
+    @allure.step('Получить текст ответа по вопросу в топике FAQ')
     def get_faq_text_by_number(self, faq_number):
         faq_data = self.FAQ_MAPPING[faq_number]
         self.click(faq_data["question"])
