@@ -2,10 +2,7 @@ import pytest
 import allure
 from selenium import webdriver
 from data import Data
-from pages.base_page import BasePage
-from pages.main_page import MainPage
-from pages.page_to_make_order import OrderPage
-
+from conftest import main_page, order_page, driver
 
 class TestMakeAnOrder:
     @allure.title('Проверка позитивного пути заказа самоката через верхнюю кнопку')
