@@ -11,6 +11,7 @@ class MainPage(BasePage):
     def close_cookie_banner(self):
         self.click(LocatorsBasePage.COOKIE_BUTTON, timeout= 5)
 
+    @allure.step('Нажать на кнопку оформления заказа')
     def scrolling_to_order_button_big_and_click(self):
         self.scroll_to_element(LocatorsMainPage.ORDER_BUTTON_BIG)
         self.click(LocatorsMainPage.ORDER_BUTTON_BIG)
