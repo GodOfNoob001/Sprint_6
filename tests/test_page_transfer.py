@@ -14,10 +14,7 @@ class TestPageTransfer:
 
     @allure.title('При нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат')
     @allure.description('В рамках данного тестового прогона проверяется, что при нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат вне зависимости от того, на какой странице был нажат логотип')
-    def test_success_transfer_to_main_page_by_click_scooter_label(self):
-        with allure.step('Переходим на главную страницу сервиса'):
-            self.driver.get(YandexScooterUrls.base_url)
-        base_page = BasePage(self.driver)
+    def test_success_transfer_to_main_page_by_click_scooter_label(self, base_page, main_page):
         with allure.step('Нажимаем на кнопку "Заказать" для перехода на другую страницу'):
             base_page.order_button_top_click()
         base_page.wait_for_url_contains("/order")
