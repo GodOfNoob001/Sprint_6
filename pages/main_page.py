@@ -7,6 +7,7 @@ class MainPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    @allure.step('Закрыть баннер куки для доступа ко всем элементам страницы')
     def close_cookie_banner(self):
         cookie_button = WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(LocatorsBasePage.COOKIE_BUTTON))
         cookie_button.click()
