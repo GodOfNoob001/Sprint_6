@@ -21,6 +21,7 @@ class BasePage:
             expected_conditions.url_to_be(url)
         )
 
+    @allure.step('Ждать URL содержащий текст')
     def wait_for_url_contains(self, text, timeout=10):
         WebDriverWait(self.driver, timeout).until(
             expected_conditions.url_contains(text)
