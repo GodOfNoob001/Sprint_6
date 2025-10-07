@@ -36,5 +36,13 @@ class MainPage(BasePage):
         self.scroll_to_element(faq_data["panel"])
         return panel_element
 
-
+    @allure.step('Нажать на логотип "Яндекс"')
+    def yandex_logo_click(self):
+        self.click(LocatorsBasePage.YANDEX_LOGO_BUTTON)
+    @allure.step('Нажать на логотип "Самокат"')
+    def scooter_logo_click(self):
+        self.click(LocatorsBasePage.SCOOTER_LOGO_BUTTON)
+    @allure.step('Нажать кнопку "Заказать" в шапке веб-сервиса')
+    def order_button_top_click(self):
+        self.click(LocatorsBasePage.ORDER_BUTTON_TOP)
 
