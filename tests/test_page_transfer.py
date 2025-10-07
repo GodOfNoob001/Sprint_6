@@ -1,17 +1,8 @@
-from selenium import webdriver
-from urls import YandexScooterUrls
-from pages.base_page import BasePage
 import allure
 from urls import YandexScooterUrls
 from conftest import base_page, main_page, driver
 
 class TestPageTransfer:
-
-    @classmethod
-    def setup_class(cls):
-        with allure.step('Создаем новый клиент браузера для совершения тестовых прогонов'):
-            cls.driver = webdriver.Firefox()
-
     @allure.title('При нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат')
     @allure.description('В рамках данного тестового прогона проверяется, что при нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат вне зависимости от того, на какой странице был нажат логотип')
     def test_success_transfer_to_main_page_by_click_scooter_label(self, base_page, main_page):

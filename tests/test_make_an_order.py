@@ -1,6 +1,4 @@
-import pytest
 import allure
-from selenium import webdriver
 from data import Data
 from conftest import main_page, order_page, driver
 

@@ -1,6 +1,5 @@
 import allure
 import pytest
-from selenium import webdriver
 from data import Data
 from conftest import main_page, driver
 
