@@ -25,6 +25,7 @@ class MainPage(BasePage):
         7: {"question": LocatorsMainPage.SEVENTH_FAQ, "panel": LocatorsMainPage.SEVENTH_FAQ_PANEL},
         8: {"question": LocatorsMainPage.EIGHTH_FAQ, "panel": LocatorsMainPage.EIGHTH_FAQ_PANEL},
     }
+    @allure.step('Получить текст вопроса по элементу на странице в топике FAQ')
     def get_faq_question_by_number(self, faq_number):
         faq_data = self.FAQ_MAPPING[faq_number]
         return self.get_element_text(faq_data["question"])
