@@ -17,8 +17,7 @@ class TestMainPage:
     ])
     @allure.title('При скролле до FAQ-блока на главной странице - отображаются валидные вопросы')
     @allure.description('В рамках данного тестового прогона проверяется, что при переходе к FAQ-блоку - вопросы отображаются, значения вопросов валидны')
-    def test_faq_on_main_page_successfully_got_right_question_text(self, faq_number, expected_question):
-        main_page = MainPage(self.driver)
+    def test_faq_on_main_page_successfully_got_right_question_text(self, main_page, faq_number, expected_question):
         with allure.step(f'Получаем текст вопроса, отображаемого на странице: {expected_question}'):
             actual_question = main_page.get_faq_question_by_number(faq_number)
         with allure.step(f'Текст вопроса соответсвует ожидаемому: {actual_question}'):
