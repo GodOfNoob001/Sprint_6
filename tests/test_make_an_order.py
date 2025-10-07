@@ -28,7 +28,7 @@ class TestMakeAnOrder:
         with allure.step('Нажимаем на кнопку создания заявки на заказ внизу страницы'):
             main_page.scrolling_to_order_button_big_and_click()
         with allure.step('Заполнить первую страницу заказа самоката: имя, фамилия, адрес доставки, ближайшую станцию метро и номер телефона'):
-            order_page.fill_first_page(order_data)
+            order_page.fill_first_page(Data.ORDER_2)
         with allure.step('Заполнить вторую страницу заказа самоката: Дату доставки, срок аренды, цвет самоката и комментарий курьеру'):
             order_page.fill_second_page(order_data)
         with allure.step('После заполнения формы - открывается модальное окно, в открывшемся окне - нажать кнопку "Да" '):
