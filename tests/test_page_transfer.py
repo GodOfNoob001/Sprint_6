@@ -1,0 +1,25 @@
+import allure
+from urls import YandexScooterUrls
+
+class TestPageTransfer:
+    @allure.title('При нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат')
+    @allure.description('В рамках данного тестового прогона проверяется, что при нажатии на логотип "Самокат" на странице - происходит редирект на главную страницу Яндекс.Самокат вне зависимости от того, на какой странице был нажат логотип')
+    def test_success_transfer_to_main_page_by_click_scooter_label(self, main_page):
+        with allure.step('Нажимаем на кнопку "Заказать" для перехода на другую страницу'):
+            main_page.order_button_top_click()
+        main_page.wait_for_url_contains("/order")
+        with allure.step('Нажимаем на логотип "Самокат" в шапке сайте'):
+            main_page.scooter_logo_click()
+        main_page.wait_for_url(YandexScooterUrls.base_url)
+        with allure.step('При нажатии на логотип "Самокат" в шапке сайте - происходит редирект на главную страницу сервиса'):
+            assert main_page.get_current_url() == YandexScooterUrls.base_url
+
+    @allure.title('При нажатии на логотип "Яндекс" на главной странице - происходит редирект на страницу Дзен')
+    @allure.description('В рамках данного тестового прогона проверяется, что при переходе к FAQ-блоку - вопросы отображаются, значения вопросов валидны')
+    def test_success_transfer_to_dzen_page_by_click_yandex_label(self, main_page):
+        with allure.step('Нажимаем на логотип "Яндекс" в шапке сайте'):
+            main_page.yandex_logo_click()
+        main_page.wait_for_new_window_and_switch()
+        main_page.wait_for_url_contains("?yredirect=true")
+        with allure.step('При нажатии на логотип "Яндекс" в шапке сайте - происходит редирект на главную страницу сервиса "Дзен"'):
+            assert YandexScooterUrls.dzen_url == main_page.get_current_url()

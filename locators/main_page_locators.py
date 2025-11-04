@@ -1,0 +1,21 @@
+from selenium.webdriver.common.by import By
+
+class LocatorsMainPage:
+    ORDER_BUTTON_BIG = [By.XPATH, "//button[contains(text(), 'Заказать')]"]
+    FAQ_TOPIC = [By.CLASS_NAME, 'Home_FAQ__3uVm4']
+    FIRST_FAQ = [By.XPATH, "//div[@id='accordion__heading-0']"]
+    SECOND_FAQ = [By.XPATH, "//div[@id='accordion__heading-1']"]
+    THIRD_FAQ = [By.XPATH, "//div[@id='accordion__heading-2']"]
+    FOURTH_FAQ = [By.XPATH, "//div[@id='accordion__heading-3']"]
+    FIFTH_FAQ = [By.XPATH, "//div[@id='accordion__heading-4']"]
+    SIXTH_FAQ = [By.XPATH, "//div[@id='accordion__heading-5']"]
+    SEVENTH_FAQ = [By.XPATH, "//div[@id='accordion__heading-6']"]
+    EIGHTH_FAQ = [By.XPATH, "//div[@id='accordion__heading-7']"]
+    FIRST_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-0']"]
+    SECOND_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-1']"]
+    THIRD_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-2']"]
+    FOURTH_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-3']"]
+    FIFTH_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-4']"]
+    SIXTH_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-5']"]
+    SEVENTH_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-6']"]
+    EIGHTH_FAQ_PANEL = [By.XPATH, "//div[@id='accordion__panel-7']"]
